@@ -4,7 +4,7 @@ This project develops the scholarly paper based recommendation system using Mach
 
 ALGORITHM:
 
-The data of 3000 scholarly papers, some or interlinked( scholarly papers are referenced to each other or of same topic or of same Author) and others are not. 
+The data of 3000 scholarly papers, some are interlinked( scholarly papers are referenced to each other or of same topic or of same Author) and others are not. 
 
 The data cleaning process is done in order to remove some invalid data.
 
