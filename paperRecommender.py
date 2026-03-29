@@ -29,11 +29,7 @@ def buildGraph():
 def knn(input, knn, filename):
 	#filename = "EMBEDDING_FILENAME.emb"
 	filehandle = open(filename, 'r')
-	#print(filehandle.readline())
 	dict1={}
-	#print(knn)
-	#input="DEXA Workshop"
-	#knn=10
 	while True:
 	    line = filehandle.readline()
 	    if not line:
@@ -42,14 +38,11 @@ def knn(input, knn, filename):
 	    lis2=lis1[-64:]
 	    key_list=lis1[0:len(lis1)-64]
 	    key= " ".join(str(x) for x in key_list)
-	    #print(str(key))
 	    dict1[str(key)]= lis2
 
 	filehandle.close()
 	distList=[]
 	distdict={}
-	#print(str('44')==str(input))
-	#print(float(dict1[str(input)][0]))
 	for i in dict1.keys():
 	    dist=0
 	    if(i==''):
@@ -63,7 +56,6 @@ def knn(input, knn, filename):
 	    
 
 	sort_distdict= sorted(distdict.items(), key = lambda kv:(kv[1], kv[0]))
-	#print(sort_distdict[0])
 	count=0
 	for i in sort_distdict:
 	    if(count>knn):
@@ -85,21 +77,17 @@ def createembeddings(Graph_data, filename):
 	# Save embeddings for later use
 	model.wv.save_word2vec_format(filename)
 QueryList= random.sample(range(0, 2554), 100)
-print(QueryList)
 
 //acc=0
 for Pi in QueryList:
 	print("running node"+str(Pi))
 	L1= list(buildGraph().successors(Pi))
 	L2=list(buildGraph().predecessors(Pi))
-	#print(L2)
 	count=0
 	Li= L1+L2
 	Li= list(dict.fromkeys(Li))
-	print(Li)
+
 	A= len(Li)
-	#print(A)
-	#print(A/2)
 	k=0
 	random_k=[3,5,10,15]
 	gr= buildGraph()
@@ -134,10 +122,6 @@ for Pi in QueryList:
 					acc[ind]+=1
 					#"acc"+str(ind)="acc"+str(ind)+1
 
-		print(acc[0])
-		print(acc[1])
-		print(acc[2])
-		print(acc[3])
 		if (str(pn) in l_knn_emb):
 			knn_index_emb= l_knn_emb.index(str(pn))
 
@@ -145,10 +129,7 @@ for Pi in QueryList:
 				if(ind_emb>=knn_index_emb):
 					acc_emb[ind]+=1
 					#("acc"+str(ind)+"emb")=("acc"+str(ind)+"emb")+1
-		print(acc_emb[0])
-		print(acc_emb[1])
-		print(acc_emb[2])
-		print(acc_emb[3])
+
 
 
 
